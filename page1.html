@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pesan Khusus</title>
+    <style>
+        body {
+            background-color: #a0ced9; /* Warna latar belakang */
+            font-family: Arial, sans-serif; /* Jenis font */
+            text-align: center; /* Pusatkan teks */
+            padding: 200px; /* Ruang padding agar tampilan lebih baik */
+        }
+
+        h1 {
+            color: #333; /* Warna teks judul */
+        }
+
+        label {
+            display: block; /* Setiap label di bawah elemen input */
+            margin-top: 10px; /* Ruang antara elemen-elemen */
+        }
+
+        input[type="radio"] {
+            display: none; /* Sembunyikan input radio asli */
+        }
+
+        label.radio-label {
+            padding: 5px 10px;
+            background-color: #007bff; /* Warna latar belakang tombol */
+            color: #fff; /* Warna teks tombol */
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type="radio"]:checked + label.radio-label {
+            background-color: #0056b3; /* Warna tombol saat dipilih */
+        }
+
+        #pesan {
+            margin-top: 20px;
+            font-size: 40px;
+            color: #fff; /* Warna teks pesan */
+            text-align: justify; /* Rata kanan kiri */
+            background-color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h1>Ada surat special untukmu</h1>
+    <h2>Apakah kamu mau melihatnya?</h2>
+    <input type="radio" id="iya" name="pilihan">
+    <label class="radio-label" for="iya">Iya</label>
+    <input type="radio" id="tidak" name="pilihan">
+    <label class="radio-label" for="tidak">Tidak</label>
+    <div id="pesan" style="display: none;"></div>
+
+    <script>
+        document.getElementById('iya').addEventListener('change', function() {
+            if (this.checked) {
+                // Redirect ke halaman_pesan.html jika "Iya" dipilih
+                window.location.href = 'halaman_pesan.html';
+            }
+        });
+
+        document.getElementById('tidak').addEventListener('change', function() {
+            if (this.checked) {
+                document.getElementById('pesan').textContent = "Harus iya, kalau tidak, aku ngambek!";
+                document.getElementById('pesan').style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>
